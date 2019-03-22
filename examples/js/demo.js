@@ -5,19 +5,6 @@
 
 $(document).ready(function () {
 
-  // ---------------------
-  // Color Thief demo code
-  // ---------------------
-  var imageArray = {images: [
-      {'file': 'examples/img/photo1.jpg'},
-      {'file': 'examples/img/photo2.jpg'},
-      {'file': 'examples/img/photo3.jpg'}
-  ]};
-
-  // Render example images
-  var examplesHTML = Mustache.to_html($('#image-section-template').html(), imageArray);
-  $('#example-images').append(examplesHTML);
-
   // Event handlers
   $('.run-functions-button').on('click', function(event) {
     var $this = $(this);
@@ -42,6 +29,8 @@ $(document).ready(function () {
     var elapsedTimeForGetPalette = Date.now() - start + elapsedTimeForGetColor;
 	var primaryColorHex 		 = rgbToHex(pColor[0], pColor[1], pColor[2]);
 	var secundaryColorHex 		 = rgbToHex(sColor[0], sColor[1], sColor[2]);
+	var primaryColorName		 = ntc.name(primaryColorHex);
+	var secundaryColorName		 = ntc.name(secundaryColorHex);
 	
     var colorThiefOutput = {
       pColor: pColor,
@@ -50,7 +39,9 @@ $(document).ready(function () {
       elapsedTimeForGetColor: elapsedTimeForGetColor,
       elapsedTimeForGetPalette: elapsedTimeForGetPalette,
 	  pColorHex: primaryColorHex,
-	  sColorHex: secundaryColorHex
+	  sColorHex: secundaryColorHex,
+	  pColorName: primaryColorName[1],
+	  sColorName: secundaryColorName[1]
     };
     var colorThiefOuputHTML = Mustache.to_html($('#color-thief-output-template').html(), colorThiefOutput);
 
