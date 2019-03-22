@@ -1,0 +1,1 @@
+{ "name": "HexThief", "version": "1.0.0", "description": "Get hex of image predominant color", "scripts": { "start": "serve", }, "dependencies": { "serve": "^10.0.1" }, "author": "Beerus Sama" }
